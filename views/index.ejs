@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <a href="/">Home</a>
+        <a href="favorit.ejs">Favorite Jokes</a>
+        <a href="random.ejs">random Joke</a>
+    </header>
+    <div>
+   <%data.forEach(data=>{%>
+    <h1>Joke #<%=data.id%></h1>
+    <h2><%=data.type%></h2>
+    <h5><%=data.setup%></h5>
+    <h6><%=data.punchline%></h6>
+    <form action="/add" method="GET">
+    <input type="hidden" name="type" value="<%=data.type%>">
+    <input type="hidden" name="setup" value="<%=data.setup%>">
+    <input type="hidden" name="punchline" value="<%=data.punchline%>">
+    <input type="submit" value="Add to my jokes list">
+    </form>
+    <%})%>
+</div>
+</body>
+</html>
